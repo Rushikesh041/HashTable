@@ -27,25 +27,11 @@
             table.Add(16, "paranoid");
             table.Add(17, "avoidable");
             table.Add(18, "situations");
-            table.Get(0);
-            table.Get(1);
-            table.Get(2);
-            table.Get(3);
-            table.Get(4);
-            table.Get(5);
-            table.Get(6);
-            table.Get(7);
-            table.Get(8);
-            table.Get(9);
-            table.Get(10);
-            table.Get(11);
-            table.Get(12);
-            table.Get(13);
-            table.Get(14);
-            table.Get(15);
-            table.Get(16);
-            table.Get(17);
-            table.Get(18);
+
+            for (int i = 0; i < table.size; i++)
+            {
+                table.Get(i);
+            }
 
             Console.WriteLine("The Added Paragraph is :: ");
             for (int i = 0; i < table.array.Length; i++)
@@ -54,6 +40,16 @@
             }
             Console.WriteLine("\n\n************** Frequency of Words **************");
             table.FrequencyOfWords(table.array, table.array.Length);
+
+            table.Remove(17);
+            table.Get(17);
+            table.array = table.array.Where(val => val != "avoidable").ToArray();
+            Console.WriteLine("\nThe Updated Paragraph is :: ");
+            for (int i = 0; i < table.array.Length; i++)
+            {
+                Console.Write($"{table.array[i]} ");
+            }
+            Console.WriteLine();
 
 
         }

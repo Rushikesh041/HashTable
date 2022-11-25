@@ -10,7 +10,7 @@ namespace HashTable
     {
         public readonly int size;
         private readonly LinkedList<KeyValue<K, V>>[] items;
-        public readonly V[] array;
+        public V[] array;
         public MyMapNode(int Size)
         {
             size = Size;
@@ -76,7 +76,20 @@ namespace HashTable
                 }
                 Console.WriteLine($"'{arr[i]}' is Repeated {count} times");
             }
-            Console.Write($"\nTotal Words are : {countWords} \n");
+            Console.Write($"\nTotal Words are : {countWords} \n\n");
+        }
+        public void Remove(K key)
+        {
+            int index = GetArrayPosition(key);
+            KeyValue<K, V> foundItem = default(KeyValue<K, V>);
+            foreach (KeyValue<K, V> item in items[index])
+            {
+                if (item.Key.Equals(key))
+                {
+                    items[index].Remove(item);
+                    break;
+                }
+            }
         }
     }
     public struct KeyValue<K, V>
